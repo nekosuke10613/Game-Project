@@ -9,8 +9,8 @@ public class PowerUpItem : MonoBehaviour {
     }
 
     MoveState _state = MoveState.Right;
-    float startPosX;
-    float endPosX;
+    private float startPosX;
+    private float endPosX;
     private float startTime;
 
     float _fieldAreaX;
