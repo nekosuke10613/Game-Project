@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
         float dy = Input.GetAxisRaw("Vertical")*Time.deltaTime;
         transform.position =new Vector3(
             Mathf.Clamp(transform.position.x + dx * _moveSpeed,-_fieldAreaX,_fieldAreaX),
-            Mathf.Clamp(transform.position.y + dy * _moveSpeed,-_fieldAreaY,_fieldAreaY), 
+            Mathf.Clamp(transform.position.y + dy * _moveSpeed,-_fieldAreaY+1,_fieldAreaY), 
             0);
         
     }
@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour {
                 _timer = _intervalScds;
             }
             _timer = _timer - Time.deltaTime;
-            print(_timer);
             
         }
     }

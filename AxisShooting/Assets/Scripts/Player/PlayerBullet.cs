@@ -18,12 +18,9 @@ public class PlayerBullet : MonoBehaviour {
 	void Update () {
         transform.Translate(0, _speed*Time.deltaTime, 0);
         if((transform.position.x<-_fieldAreaX||_fieldAreaX < transform.position.x)
-            ||( transform.position.y < -_fieldAreaY || _fieldAreaY < transform.position.y))
+            ||( transform.position.y < -_fieldAreaY+1 || _fieldAreaY < transform.position.y-1.5f))
         {
-            if (transform.root.gameObject != null)
-            {
-                Destroy(transform.root.gameObject);
-            }
+            
             Destroy(gameObject);
         }
 	}

@@ -17,8 +17,8 @@ public class GameSceneManager : MonoBehaviour {
     public GameScene _currentScene = GameScene.Title;
     string _deadSceneName;
 
-    [SerializeField] GameObject _loadUI;
-    [SerializeField] Image _fadeBG;
+    [SerializeField] GameObject _loadUI　= null;
+    [SerializeField] Image _fadeBG = null;
     [SerializeField] float _slider;
 
     private void Awake()
