@@ -4,11 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum GameScene {
-    Title,
-    Stage1,
-    GameOver,
-}
+
 
 public class GameSceneManager : MonoBehaviour {
 
@@ -33,10 +29,10 @@ public class GameSceneManager : MonoBehaviour {
     }
     public void  NextScene(string nextSceneName,GameScene sceneState)
     {
-        _currentScene = sceneState;
-        StartCoroutine(LoadData(nextSceneName));
+       
+        StartCoroutine(LoadData(nextSceneName,sceneState));
     }
-    IEnumerator LoadData(string nextSceneName)
+    IEnumerator LoadData(string nextSceneName, GameScene sceneState)
     {
         /*--フェードインスタート--*/
         StartCoroutine(FadeInAnim());
@@ -46,18 +42,18 @@ public class GameSceneManager : MonoBehaviour {
         _loadUI.SetActive(true);
         //シーンのロード
         async = SceneManager.LoadSceneAsync(nextSceneName,LoadSceneMode.Additive);
-        //デバッグ用
-        yield return new WaitForSeconds(1);
-        while (!async.isDone)
-        {
-            var progressVal = Mathf.Clamp01(async.progress / 0.9f);
-            _slider = progressVal;
-            yield return null;
-        }
+        ////デバッグ用
+        yield return new WaitForSeconds(0.2f);
+        //while (!async.isDone)
+        //{
+        //    var progressVal = Mathf.Clamp01(async.progress / 0.9f);
+        //    _slider = progressVal;
+        //    yield return null;
+        //}
         //シーンのアンロード
         if (_deadSceneName != null)
             SceneManager.UnloadSceneAsync(_deadSceneName);
-
+        _currentScene = sceneState;
         /*--フェードアウトスタート--*/
         _deadSceneName = nextSceneName;
         _loadUI.SetActive(false);
@@ -90,15 +86,15 @@ public class GameSceneManager : MonoBehaviour {
     void DebugCheckScene()
     {
         //デバッグ用
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1)&&Input.GetKeyDown(KeyCode.G))
         {
             NextScene("Title", GameScene.Title);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2) && Input.GetKeyDown(KeyCode.G))
         {
             NextScene("Stage1", GameScene.Stage1);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3) && Input.GetKeyDown(KeyCode.G))
         {
             NextScene("GameOver", GameScene.GameOver);
         }

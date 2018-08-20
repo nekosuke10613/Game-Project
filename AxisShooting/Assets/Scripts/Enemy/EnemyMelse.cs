@@ -21,7 +21,11 @@ public class EnemyMelse : EnemyParent {
     }
 	// Update is called once per frame
 	
-    private void Update()
+    void Update()
+    {
+       
+    }
+    private void FixedUpdate()
     {
         EnemyFunction();
     }
@@ -29,7 +33,7 @@ public class EnemyMelse : EnemyParent {
     {
         if(_melseState == MelseState.RightMirror)
         {
-            transform.position = transform.position + new Vector3(-_mirrorSpeed,-_mirrorSpeed,0)*Time.fixedDeltaTime;
+            transform.position = transform.position + new Vector3(-_mirrorSpeed,-_mirrorSpeed,0)* Time.fixedDeltaTime;
             
            Invoke("DelayRight", 0.5f);
             

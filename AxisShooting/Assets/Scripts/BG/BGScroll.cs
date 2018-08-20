@@ -26,7 +26,8 @@ public class BGScroll : MonoBehaviour {
         }
         //スタートなら速度を倍にする
         _stageState = _stageManager.GetComponent<StageManager>()._stageState;
-        pos.y = transform.position.y - _scrlSpeed *((_stageState ==StageState.Start)?5:1)* Time.deltaTime;
+        pos.y = transform.position.y - _scrlSpeed *
+            ((_stageState ==StageState.Start)?5:1)* Time.deltaTime;
         transform.position = pos;
        
     }

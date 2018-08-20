@@ -11,7 +11,7 @@ public enum StageState
 }
 public class StageManager : MonoBehaviour {
 
-    
+    [SerializeField] GameObject _startUI;
     public StageState _stageState;
     public bool _bossDead;
     float _scrollSpeed;
@@ -46,6 +46,9 @@ public class StageManager : MonoBehaviour {
 	}
     void StartUpdate()
     {
+        if(!_startUI.activeSelf)
+            _startUI.SetActive(true);
+
         _timer = _timer + Time.deltaTime;
         if (_timer > 2)
         {
@@ -54,6 +57,8 @@ public class StageManager : MonoBehaviour {
     }
     void MoveUpdate()
     {
+        if(_startUI.activeSelf)
+            _startUI.SetActive(false);
         _pos.y = transform.position.y - _scrollSpeed * Time.deltaTime;
         transform.position = _pos;
     }

@@ -235,11 +235,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GameController.cs" />
+    <Compile Include="Assets\Scripts\BG\BGScroll.cs" />
+    <Compile Include="Assets\Scripts\BG\BGStarFade.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyMelse.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyParent.cs" />
+    <Compile Include="Assets\Scripts\Enemy\FireEffect.cs" />
     <Compile Include="Assets\Scripts\Item\PowerUpItem.cs" />
+    <Compile Include="Assets\Scripts\Map\BossChecker.cs" />
+    <Compile Include="Assets\Scripts\Map\BossZoneTrigger.cs" />
+    <Compile Include="Assets\Scripts\Map\ScoreObstacle.cs" />
+    <Compile Include="Assets\Scripts\Map\StageManager.cs" />
+    <Compile Include="Assets\Scripts\Map\StageNumManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerBullet.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerBulletParent.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerLevelState.cs" />
+    <Compile Include="Assets\Scripts\Utility\GameController.cs" />
+    <Compile Include="Assets\Scripts\Utility\GameSceneManager.cs" />
+    <Compile Include="Assets\Scripts\Utility\GameState.cs" />
+    <Compile Include="Assets\Scripts\Utility\UI\ScoreUIText.cs" />
+    <Compile Include="Assets\Scripts\Utility\UI\TitleColorChange.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\S_ScoreObstacle.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
