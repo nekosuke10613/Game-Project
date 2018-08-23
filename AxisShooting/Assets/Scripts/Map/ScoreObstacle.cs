@@ -26,7 +26,6 @@ public class ScoreObstacle : MonoBehaviour {
     {
         if (other.CompareTag("PlayerBullet"))
         {
-            Debug.Log(true);
             _hp--;
             if (_hp <= 0)
             {

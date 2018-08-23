@@ -60,7 +60,6 @@ public class EnemyMelse : EnemyParent {
                 ChangeState(0);
             }
         }
-        
     }
     void DelayRight()
     {

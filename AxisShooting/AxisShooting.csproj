@@ -237,12 +237,17 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BG\BGScroll.cs" />
     <Compile Include="Assets\Scripts\BG\BGStarFade.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyGroupDelete.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyGroupManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMelse.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyNormal.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyParent.cs" />
     <Compile Include="Assets\Scripts\Enemy\FireEffect.cs" />
+    <Compile Include="Assets\Scripts\Explosion\ExplosionEffect.cs" />
     <Compile Include="Assets\Scripts\Item\PowerUpItem.cs" />
     <Compile Include="Assets\Scripts\Map\BossChecker.cs" />
     <Compile Include="Assets\Scripts\Map\BossZoneTrigger.cs" />
+    <Compile Include="Assets\Scripts\Map\EnemyDeadTrigger.cs" />
     <Compile Include="Assets\Scripts\Map\ScoreObstacle.cs" />
     <Compile Include="Assets\Scripts\Map\StageManager.cs" />
     <Compile Include="Assets\Scripts\Map\StageNumManager.cs" />

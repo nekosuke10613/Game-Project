@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //デバッグモードじゃなかったら現在のシーンを検索
         if (!_debagMode)
         {
             _scene = GetComponent<GameSceneManager>()._currentScene;
@@ -39,7 +40,7 @@ public class GameController : MonoBehaviour {
             _scene = GameScene.Stage1;
         }
             
-
+        //ゲーム中UIの表示　タイトルは表示しない
         if (_scene == GameScene.Title)
         {
             _UICanvas.SetActive(false);
@@ -55,7 +56,6 @@ public class GameController : MonoBehaviour {
             UpdateUI();
            
         }
-        
 	}
     void UpdateUI()
     {

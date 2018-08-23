@@ -12,6 +12,7 @@ public enum StageState
 public class StageManager : MonoBehaviour {
 
     [SerializeField] GameObject _startUI;
+    [SerializeField] GameObject _enemyGroup;
     public StageState _stageState;
     public bool _bossDead;
     float _scrollSpeed;
@@ -32,6 +33,10 @@ public class StageManager : MonoBehaviour {
         }
         else if (_stageState == StageState.Move)
         {
+            if (!_enemyGroup.activeInHierarchy)
+            {
+                _enemyGroup.SetActive(true);
+            }
             MoveUpdate();
         }
         else if(_stageState == StageState.Boss)

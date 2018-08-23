@@ -37,6 +37,11 @@ public class EnemyParent : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+        //画面外に出たらスコア加算せず消滅
+        if (other.CompareTag("EnemyDeadTrigger"))
+        {
+            Destroy(gameObject);
+        }
        
     }
 }
