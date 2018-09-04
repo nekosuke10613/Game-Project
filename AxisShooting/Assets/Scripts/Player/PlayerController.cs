@@ -39,7 +39,11 @@ public class PlayerController : MonoBehaviour {
     }
     void AttackPlayer()
     {
-        if (Input.GetButton("Jump"))
+        if (Input.GetButtonDown("Jump"))
+        {
+            Instantiate(_playerBullet, transform.position, Quaternion.identity);
+        }
+        else if (Input.GetButton("Jump"))
         {
             if (_timer <= 0)
             {
@@ -49,5 +53,6 @@ public class PlayerController : MonoBehaviour {
             _timer = _timer - Time.deltaTime;
             
         }
+        
     }
 }

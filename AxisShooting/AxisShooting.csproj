@@ -237,11 +237,17 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BG\BGScroll.cs" />
     <Compile Include="Assets\Scripts\BG\BGStarFade.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\Boss4Attack.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\Boss4Collide.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\Boss4Controller.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\Boss4Instance.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Boss\Boss4Move.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Bullet\Boss4Bullet.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyGroupDelete.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyGroupManager.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyMelse.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyNormal.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyParent.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySuper\EnemyMelse.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySuper\EnemyNormal.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySuper\EnemyParent.cs" />
     <Compile Include="Assets\Scripts\Enemy\FireEffect.cs" />
     <Compile Include="Assets\Scripts\Explosion\ExplosionEffect.cs" />
     <Compile Include="Assets\Scripts\Item\PowerUpItem.cs" />
@@ -255,6 +261,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerBulletParent.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerLevelState.cs" />
+    <Compile Include="Assets\Scripts\Title\TitleController.cs" />
     <Compile Include="Assets\Scripts\Utility\GameController.cs" />
     <Compile Include="Assets\Scripts\Utility\GameSceneManager.cs" />
     <Compile Include="Assets\Scripts\Utility\GameState.cs" />

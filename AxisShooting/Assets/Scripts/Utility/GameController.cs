@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour {
             
         //ゲーム中UIの表示　タイトルは表示しない
         if (_scene == GameScene.Title)
-        {
+        {if(_UICanvas!=null)
             _UICanvas.SetActive(false);
             setActive = false;
         }
@@ -50,6 +50,7 @@ public class GameController : MonoBehaviour {
         {
             if (!setActive)
             {
+                if(_UICanvas !=null)
                 _UICanvas.SetActive(true);
                 setActive = true;
             }
@@ -59,12 +60,14 @@ public class GameController : MonoBehaviour {
 	}
     void UpdateUI()
     {
+        if(_stageUIText !=null)
         //ステージ数
         _stageUIText.GetComponent<Text>().text = GetComponent<StageNumManager>()._StageNum.ToString();
         
         //スコア
         if (_MasterScore != _prevScore)
         {
+            if(_stageUIText !=null)
             _scoreUIText.GetComponent<ScoreUIText>()._score = _MasterScore;
 
         }

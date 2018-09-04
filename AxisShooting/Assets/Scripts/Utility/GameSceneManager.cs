@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-
+/*--  マルチシーン仕様のシーンマネージャ　ロードアンロード中にロード画面を出せる  --*/
+/////////////フェードアウト以外にも増やしたかったらコルーチンを入れ替える///////////
 public class GameSceneManager : MonoBehaviour {
 
     AsyncOperation async;
@@ -15,51 +16,94 @@ public class GameSceneManager : MonoBehaviour {
 
     [SerializeField] GameObject _loadUI　= null;
     [SerializeField] Image _fadeBG = null;
-    [SerializeField] float _slider;
+
+    bool _firstLoadFinished = false;
 
     private void Awake()
     {//シーンの初期化
         SceneManager.LoadSceneAsync("Title",LoadSceneMode.Additive);
         _deadSceneName = "Title";
+        string s = SceneManager.GetActiveScene().name;
+        _firstLoadFinished = false;
+        
     }
     // Update is called once per frame
     void Update()
     {
-        DebugCheckScene();
+        if (FindObjectOfType<StageManager>() !=null
+            &&FindObjectOfType<StageManager>()._stageState == StageState.Over)
+        {
+            if(FindObjectOfType<StageManager>()._overTimer <= 0)
+            {
+                Scene s = SceneManager.GetSceneByName("Title");
+                if (!_firstLoadFinished) {
+                    NextScene("Title", GameScene.Title);
+                    _firstLoadFinished = true;
+                }
+                
+            }
+            if (Input.GetButtonDown("Jump"))
+            {
+                //次のステージ
+                NextScene("Stage1", GameScene.Stage1);
+            }
+        }
+        
+        //DebugCheckScene();
+    }
+    private void LateUpdate()
+    {
+        MainSceneActiveChecker();
     }
     public void  NextScene(string nextSceneName,GameScene sceneState)
     {
-       
         StartCoroutine(LoadData(nextSceneName,sceneState));
     }
     IEnumerator LoadData(string nextSceneName, GameScene sceneState)
     {
-        /*--フェードインスタート--*/
+        /*---------------------フェードインスタート---------------------*/
         StartCoroutine(FadeInAnim());
         yield return new WaitForSeconds(1);
-
-        /*--ロード中--*/
+        /*---------------------ロード中---------------------------------*/
         _loadUI.SetActive(true);
+        
         //シーンのロード
         async = SceneManager.LoadSceneAsync(nextSceneName,LoadSceneMode.Additive);
-        ////デバッグ用
-        yield return new WaitForSeconds(0.2f);
-        //while (!async.isDone)
-        //{
-        //    var progressVal = Mathf.Clamp01(async.progress / 0.9f);
-        //    _slider = progressVal;
-        //    yield return null;
-        //}
+        //アクティブシーンを今のシーンに
+        ////// ・これでも同じシーンを読み込むとアクティブがMasterに行くので
+        ////// 　MainSceneActivechecker関数で対処
+        Scene sActive = SceneManager.GetSceneByName(nextSceneName);
+        while (!sActive.isLoaded)
+        {
+            yield return null;
+        }
+        SceneManager.SetActiveScene(sActive);
         //シーンのアンロード
         if (_deadSceneName != null)
             SceneManager.UnloadSceneAsync(_deadSceneName);
+        ////デバッグ用
+        yield return new WaitForSeconds(0.2f);
+        
         _currentScene = sceneState;
-        /*--フェードアウトスタート--*/
+
+        /*---------------------フェードアウトスタート---------------------*/
         _deadSceneName = nextSceneName;
         _loadUI.SetActive(false);
-        _slider = 0;
         StartCoroutine(FadeAnim());
+        _firstLoadFinished = false;
     }
+    //マスターシーンがアクティブになってしまった時の対処
+    void MainSceneActiveChecker()
+    {
+        Scene s2 = SceneManager.GetSceneByName(_deadSceneName);
+        if (SceneManager.GetActiveScene().name == "MasterScene"
+            && s2.isLoaded)
+        {
+            SceneManager.SetActiveScene(s2);
+
+        }
+    }
+    ////////////////////////////　　以下ロード中エフェクト　　///////////////////////////////
     public IEnumerator FadeInAnim()
     {
         float t = 0.0f;
@@ -82,6 +126,20 @@ public class GameSceneManager : MonoBehaviour {
         }
 
         _fadeBG.color = new Color(0, 0, 0, 0.0f);
+    }
+    
+
+    ///////////////////////////////  以下不要になった関数  //////////////////////////////
+
+    void TagObjectDeleter()
+    {
+        //マスターシーンに残ってるオブジェクトを削除する用
+        //タグ指定して全消しシーンのアクティブ切り替えられたから不要になった
+        var enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in enemys)
+        {
+            Destroy(enemy);
+        }
     }
     void DebugCheckScene()
     {

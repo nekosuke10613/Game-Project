@@ -15,6 +15,7 @@ public class PlayerLevelState : MonoBehaviour {
     [SerializeField] GameObject FirstBullet = null;
     [SerializeField] GameObject SecondBullet = null;
     [SerializeField] GameObject FinalBullet = null;
+    [SerializeField] GameObject _deadEffect = null;
     public PlayerState _state;
    
 
@@ -49,6 +50,23 @@ public class PlayerLevelState : MonoBehaviour {
             }
             Destroy(other.gameObject);
         }
+        if (other.gameObject.CompareTag("Enemy")|| other.gameObject.CompareTag("EnemyBullet"))
+        {
+            //1，2，は普通に死亡
+            if (_state <= PlayerState.Second)
+            {//無敵時間とダメージ
+                Instantiate(_deadEffect, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+                
+            }
+            //3 で被弾したらバリア-1、4状態に
+            else if(_state == PlayerState.Third)
+            {
+
+            }
+            
+        }
+        
     }
        
     

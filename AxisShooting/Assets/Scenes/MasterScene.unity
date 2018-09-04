@@ -856,7 +856,6 @@ MonoBehaviour:
   _currentScene: 0
   _loadUI: {fileID: 1749702799}
   _fadeBG: {fileID: 1632752185}
-  _slider: 0
 --- !u!4 &1978591336
 Transform:
   m_ObjectHideFlags: 0

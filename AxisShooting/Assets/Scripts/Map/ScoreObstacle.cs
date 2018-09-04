@@ -8,6 +8,7 @@ public class ScoreObstacle : MonoBehaviour {
     [SerializeField] Material _BeforeMat;
     [SerializeField] int _breakNum = 2;
     [SerializeField] int _score = 1;
+    [SerializeField] GameObject _brokeEffect = null;
     bool _broke = false;
     int _hp;
 
@@ -33,6 +34,8 @@ public class ScoreObstacle : MonoBehaviour {
                 {
                     GetComponent<Renderer>().material = _AfterMat;
                     GameObject.FindWithTag("GameController").GetComponent<GameController>()._MasterScore += _score;
+                    Instantiate(_brokeEffect,
+                        new Vector3(transform.position.x,transform.position.y,transform.position.z-1), Quaternion.identity);
                 }
                 
                 _broke = true;

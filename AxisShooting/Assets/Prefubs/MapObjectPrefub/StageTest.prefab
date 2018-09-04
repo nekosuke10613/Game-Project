@@ -76,10 +76,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4266203361648458}
   - component: {fileID: 65667021916816380}
+  - component: {fileID: 114693058888740924}
   m_Layer: 0
   m_Name: BossZoneTrigger
   m_TagString: BossTrigger
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -138,7 +139,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1954261578215452}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 20.49, z: 0}
+  m_LocalPosition: {x: -0.3, y: 32.41, z: 0}
   m_LocalScale: {x: 17, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4175028896237386}
@@ -370,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cbf3f5720557374b8b0536f708f5fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeed: 2
 --- !u!114 &114550396622635910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -384,6 +386,20 @@ MonoBehaviour:
   _AfterMat: {fileID: 2100000, guid: 00624b23aa8b0e941b1e49553792cdb8, type: 2}
   _BeforeMat: {fileID: 2100000, guid: 07e62fce8a3c87e44a1d36e2b6c9d805, type: 2}
   _breakNum: 2
+  _score: 50
+  _brokeEffect: {fileID: 1067659955323348, guid: d1f3eba0ec68fd7449abfefa7c6db1a3,
+    type: 2}
+--- !u!114 &114693058888740924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1954261578215452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808001b63a964cc42bd9e0a38c33297d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114890468137470346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -395,7 +411,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712120dfa61300745aaf48ee1f952057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stageState: 2
+  _startUI: {fileID: 0}
+  _clearUI: {fileID: 0}
+  _overUI: {fileID: 0}
+  _timerUI: {fileID: 0}
+  _enemyGroup: {fileID: 0}
+  _bossObject: {fileID: 1432793765460606, guid: 93964fcd8fd2a1044a08a972a13775c1,
+    type: 2}
+  _DebugMode: 0
+  _stageState: 1
+  _bossDead: 0
+  _overTimer: 5
 --- !u!136 &136475827982823522
 CapsuleCollider:
   m_ObjectHideFlags: 1

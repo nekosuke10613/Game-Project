@@ -9,6 +9,7 @@ public class EnemyMelse : EnemyParent {
         RightMove = 3,
     }
     MelseState _melseState = MelseState.RightMirror;
+
     [SerializeField]float _moveSpeed = 4;
     [SerializeField] float _mirrorSpeed = 3;
 

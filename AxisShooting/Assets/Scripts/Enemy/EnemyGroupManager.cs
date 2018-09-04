@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyGroupManager : MonoBehaviour {
     //グループリスト
-    [SerializeField,Header("エネミーグループは")]
+    [SerializeField,Header("")]
     List<GameObject> _enemyGroups = new List<GameObject>();
 
     int _currentNum;
@@ -35,7 +35,7 @@ public class EnemyGroupManager : MonoBehaviour {
     }
     void AddEnemys()
     {
-        Debug.Log(_currentNum + ","+ _enemyGroups.Count);
+ 
         //リストのカウントを超えたら
         if(_currentNum == _enemyGroups.Count-1)
         {

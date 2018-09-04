@@ -157,6 +157,8 @@ MonoBehaviour:
     type: 2}
   FinalBullet: {fileID: 1499865904172356, guid: bcc85a4edc9299b41b709b083bb10dd1,
     type: 2}
+  _deadEffect: {fileID: 1067659955323348, guid: bbae0da8f7081ee4e98c31074e496f7f,
+    type: 2}
   _state: 0
 --- !u!136 &136451221615205242
 CapsuleCollider:

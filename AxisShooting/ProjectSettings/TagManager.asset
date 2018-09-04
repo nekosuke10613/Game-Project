@@ -10,6 +10,7 @@ TagManager:
   - BossTrigger
   - Enemy
   - EnemyDeadTrigger
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
