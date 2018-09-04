@@ -12,10 +12,10 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject _scoreUIText = null;
     [SerializeField] Text _stageUIText = null;
     public int _MasterScore { get; set; }
-    int stageNum;
+    int _stageNum;
     GameScene _scene;
     int _prevScore;
-    bool setActive = false;
+    bool _setActive = false;
 
     public bool _debagMode = false;
 
@@ -42,20 +42,20 @@ public class GameController : MonoBehaviour {
             
         //ゲーム中UIの表示　タイトルは表示しない
         if (_scene == GameScene.Title)
-        {if(_UICanvas!=null)
+        {
+            if (_UICanvas!=null)
             _UICanvas.SetActive(false);
-            setActive = false;
+            _setActive = false;
         }
         else
         {
-            if (!setActive)
+            if (!_setActive)
             {
                 if(_UICanvas !=null)
                 _UICanvas.SetActive(true);
-                setActive = true;
+                _setActive = true;
             }
             UpdateUI();
-           
         }
 	}
     void UpdateUI()
@@ -69,7 +69,6 @@ public class GameController : MonoBehaviour {
         {
             if(_stageUIText !=null)
             _scoreUIText.GetComponent<ScoreUIText>()._score = _MasterScore;
-
         }
         _prevScore = _MasterScore;
     }

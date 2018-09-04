@@ -14,6 +14,9 @@ public class TitleController : MonoBehaviour {
         if (Input.GetButtonDown("Jump"))
         {
             FindObjectOfType<GameSceneManager>().NextScene("Stage1", GameScene.Stage1);
+            string n = GameObject.FindWithTag("SoundManager").gameObject.GetComponent<BGMNameRefalence>()._playBGM;
+            SoundManager.Instance.PlayBGM(n,0.5f);
+            
         }
 	}
 }

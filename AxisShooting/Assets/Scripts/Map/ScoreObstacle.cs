@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class ScoreObstacle : MonoBehaviour {
 
-    [SerializeField] Material _AfterMat;
-    [SerializeField] Material _BeforeMat;
+    [SerializeField] GameObject _AfterImage = null;
+    [SerializeField] GameObject _BeforeImage=null;
     [SerializeField] int _breakNum = 2;
     [SerializeField] int _score = 1;
     [SerializeField] GameObject _brokeEffect = null;
-    bool _broke = false;
-    int _hp;
+    [SerializeField] GameObject _powerUpItem = null;
+    public bool _broke = false;
+    public int _hp;
 
 	// Use this for initialization
 	void Start () {
         _hp = _breakNum;
+        _AfterImage.SetActive(false);
+        _BeforeImage.SetActive(true);
 	}
 	
 	// Update is called once per frame
@@ -28,18 +31,27 @@ public class ScoreObstacle : MonoBehaviour {
         if (other.CompareTag("PlayerBullet"))
         {
             _hp--;
-            if (_hp <= 0)
+            if (_hp <= 0&& !_broke)
             {
-                if (!_broke)
-                {
-                    GetComponent<Renderer>().material = _AfterMat;
-                    GameObject.FindWithTag("GameController").GetComponent<GameController>()._MasterScore += _score;
-                    Instantiate(_brokeEffect,
-                        new Vector3(transform.position.x,transform.position.y,transform.position.z-1), Quaternion.identity);
-                }
-                
-                _broke = true;
+                Break();
+                PowerUpCheck();
             }
+        }
+    }
+    private void Break()
+    {
+        _AfterImage.SetActive(true);
+        _BeforeImage.SetActive(false);
+        GameObject.FindWithTag("GameController").GetComponent<GameController>()._MasterScore += _score;
+        Instantiate(_brokeEffect,
+            new Vector3(transform.position.x, transform.position.y, transform.position.z - 1), Quaternion.identity);
+        _broke = true;
+    }
+    void PowerUpCheck()
+    {
+        if(_powerUpItem != null)
+        {
+            Instantiate(_powerUpItem, transform.position, Quaternion.identity);
         }
     }
 }

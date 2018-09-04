@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4021177931608218}
   - component: {fileID: 114399309967792444}
   m_Layer: 0
-  m_Name: MelseGroup
+  m_Name: G_Melse
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - EnemyDeadTrigger
   - EnemyBullet
+  - SoundManager
   layers:
   - Default
   - TransparentFX

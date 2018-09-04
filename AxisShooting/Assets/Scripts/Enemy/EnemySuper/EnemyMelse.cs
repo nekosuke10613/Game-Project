@@ -13,8 +13,8 @@ public class EnemyMelse : EnemyParent {
     [SerializeField]float _moveSpeed = 4;
     [SerializeField] float _mirrorSpeed = 3;
 
-    float _fieldAreaX;
-    float _fieldAreaY;
+    float _fieldAreaX = 0;
+    float _fieldAreaY = 0;
     // Use this for initialization
     void Start () {
         _fieldAreaX = GameObject.FindWithTag("GameController").GetComponent<GameController>()._fieldAreaX;

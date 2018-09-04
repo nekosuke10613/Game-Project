@@ -63,6 +63,7 @@ public class GameSceneManager : MonoBehaviour {
     {
         /*---------------------フェードインスタート---------------------*/
         StartCoroutine(FadeInAnim());
+        
         yield return new WaitForSeconds(1);
         /*---------------------ロード中---------------------------------*/
         _loadUI.SetActive(true);
@@ -71,7 +72,7 @@ public class GameSceneManager : MonoBehaviour {
         async = SceneManager.LoadSceneAsync(nextSceneName,LoadSceneMode.Additive);
         //アクティブシーンを今のシーンに
         ////// ・これでも同じシーンを読み込むとアクティブがMasterに行くので
-        ////// 　MainSceneActivechecker関数で対処
+        ////// 　MainSceneActiveChecker関数で対処
         Scene sActive = SceneManager.GetSceneByName(nextSceneName);
         while (!sActive.isLoaded)
         {
@@ -100,7 +101,6 @@ public class GameSceneManager : MonoBehaviour {
             && s2.isLoaded)
         {
             SceneManager.SetActiveScene(s2);
-
         }
     }
     ////////////////////////////　　以下ロード中エフェクト　　///////////////////////////////

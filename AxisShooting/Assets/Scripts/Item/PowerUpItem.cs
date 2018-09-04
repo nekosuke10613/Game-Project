@@ -23,6 +23,7 @@ public class PowerUpItem : MonoBehaviour {
     {
         _fieldAreaX = GameObject.FindWithTag("GameController").GetComponent<GameController>()._fieldAreaX;
         _fieldAreaY = GameObject.FindWithTag("GameController").GetComponent<GameController>()._fieldAreaY;
+        _scrollSpeed = GameObject.FindWithTag("GameController").GetComponent<GameController>()._scrollSpeed;
     }
     // Use this for initialization
     void Start () {
@@ -30,10 +31,10 @@ public class PowerUpItem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        
         if (_state == MoveState.Right)
         {
-            transform.position = transform.position + new Vector3(_moveSpeed, 0, 0) * Time.deltaTime;
+            transform.position = transform.position + new Vector3(_moveSpeed, -_scrollSpeed, 0) * Time.deltaTime;
             if (transform.position.x > _fieldAreaX)
             {
                 _state = MoveState.Left;
@@ -41,7 +42,7 @@ public class PowerUpItem : MonoBehaviour {
         }
         else
         {
-            transform.position = transform.position + new Vector3(-_moveSpeed, 0, 0) * Time.deltaTime;
+            transform.position = transform.position + new Vector3(-_moveSpeed, -_scrollSpeed, 0) * Time.deltaTime;
             if (transform.position.x < -_fieldAreaX)
             {
                 _state = MoveState.Right;

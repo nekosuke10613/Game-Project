@@ -254,6 +254,7 @@
     <Compile Include="Assets\Scripts\Map\BossChecker.cs" />
     <Compile Include="Assets\Scripts\Map\BossZoneTrigger.cs" />
     <Compile Include="Assets\Scripts\Map\EnemyDeadTrigger.cs" />
+    <Compile Include="Assets\Scripts\Map\PowerUpObstacle.cs" />
     <Compile Include="Assets\Scripts\Map\ScoreObstacle.cs" />
     <Compile Include="Assets\Scripts\Map\StageManager.cs" />
     <Compile Include="Assets\Scripts\Map\StageNumManager.cs" />
@@ -265,6 +266,9 @@
     <Compile Include="Assets\Scripts\Utility\GameController.cs" />
     <Compile Include="Assets\Scripts\Utility\GameSceneManager.cs" />
     <Compile Include="Assets\Scripts\Utility\GameState.cs" />
+    <Compile Include="Assets\Scripts\Utility\SingletonMonoBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Utility\Sound\BGMNameRefalence.cs" />
+    <Compile Include="Assets\Scripts\Utility\Sound\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Utility\UI\ScoreUIText.cs" />
     <Compile Include="Assets\Scripts\Utility\UI\TitleColorChange.cs" />
   </ItemGroup>
